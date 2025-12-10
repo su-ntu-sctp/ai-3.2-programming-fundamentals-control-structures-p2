@@ -1,43 +1,38 @@
-# Lesson Repo Template
+# 3.2 Programming Fundamentals and Control Structures (Part 2)
 
-Template for creating lesson repositories under **su-ntu-sctp**.
+## Lesson Overview
 
-## Naming (Option A)
-`5/3m-<track>-<module>.<lesson>-<topic-slug>`  
-**Examples**
-`5/3m-ai-3.1-java-intro`
+![Control Structures](./assets/images/infographic-3.2-control-structures.png)
 
-## Naming (Option B) 
+## Dependencies
 
-`<track>-<module>.<lesson>-<topic-slug>`
+Refer to the following markdown file for the respective sections of the class:
 
-**Examples**
-`ai-3.1-java-intro`
+- [Self Studies](./studies.md)
+- [Lesson](./lesson.md)
+- [Assignment](./assignment.md)
+- [Reference](./reference.md)
 
+## Lesson Objectives
 
-## Structure
-```text
-.
-├─ README.md
-├─ lesson.md
-├─ assignment.md
-├─ quiz.md
-├─ studies.md
-├─ slides/
-│  └─ placeholder.txt
-├─ assets/
-│  ├─ images/
-│  └─ data/
-└─ .gitignore
-```
+By the end of the lesson, you will be able to
 
+* **Apply decision-making and looping constructs** (if-else, switch, for, while) to control program execution and create dynamic, responsive Java applications.
+* **Organize code using packages and methods** to build modular, maintainable applications following professional Java development practices.
+* **Implement method overloading and access modifiers** to create flexible, reusable code while properly encapsulating functionality.
 
-## Use This Template
-1) Click **Use this template → Create new repository**  
-2) Name it using the convention above  
-3) Clone, edit files, commit, push
+## Lesson Plan
 
-## Notes
-- Put slides in `slides/` (pptx/pdf)  
-- Images in `assets/images/`, data in `assets/data/`  
-- Each file contains its own authoring instructions (open and follow the checklists inside)
+| Duration | What                    | How or Why                                                       |
+| -------- | ----------------------- | ---------------------------------------------------------------- |
+| - 5mins  | Start zoom session      | So that learners can join early and start class on time.         |
+| 15 mins  | Activity                | Recap on self-study and prework materials.                       |
+| 50 mins  | Code-along              | Part 1: Control Flow Statements (if, loops, switch, Scanner).    |
+|          | **1 HR MARK**           |                                                                  |
+| 15 mins  | Code-along              | Part 2: Enums in Control Flow.                                   |
+| 35 mins  | Code-along              | Part 3: Packages (built-in, user-defined, imports).              |
+| 10 mins  | Break                   |                                                                  |
+|          | **2 HR MARK**           |                                                                  |
+| 50 mins  | Code-along              | Part 4: Methods (static/instance, access modifiers, overloading).|
+| 10 mins  | Briefing / Q&A          | Brief on references, assignment and Q&A.                         |
+|          | **END CLASS 3 HR MARK** |                                                                  |

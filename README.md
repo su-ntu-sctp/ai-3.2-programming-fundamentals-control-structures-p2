@@ -11,7 +11,7 @@ Refer to the following markdown file for the respective sections of the class:
 - [Self Studies](./studies.md)
 - [Lesson](./lesson.md)
 - [Assignment](./assignment.md)
-- [Reference](./reference.md)
+- [Slide Deck](./slides.md)
 
 ## Lesson Objectives
 

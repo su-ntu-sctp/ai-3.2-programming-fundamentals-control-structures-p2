@@ -1,34 +1,20 @@
 # Assignment (Optional)
 
 ## Brief
-[1–2 sentences: what to build and the expected outcome.]
 
-## Tasks
-- [Task 1]
-- [Task 2]
-- [Optional extension]
+Create a program called ControlAssignment.java and solve the following problems using if-else and switch case statements.
+1. Determine if a number is divisible by 3, 5 or both.
+2. Given a sample budget, determine what to ride given the following conditions:
+    - if budget is greater than 100, ride a taxi
+    - if budget is between 50 to 100, ride train
+    - if budget is between 20 to 49, ride bus
+    - if budget is between 0 to 19, walk
+3. Use a switch case to determine the zodiac animal given a number from 1 to 12. (1 - rat, 2 - ox, 3 - tiger, etc.)
 
-## Setup
-- [Starter/template link if any]
-- [Install & run steps (3–5 lines)]
-- [Sample I/O or endpoints]
+## Submission (Optional)
 
-## Deliverables (if submitting)
-- GitHub repo URL
-- README (setup, notes, screenshots)
-- Demo link (optional)
-
-## AI & Tools
-- Tools: [ChatGPT/Copilot/etc.]
-- Assisted with: [tests/docs/code]
-- Validation: [tests/manual checks]
-- Attribution: [links to adapted sources]
-
-## Collaboration
-- Discuss ideas, submit your own work; credit classmates/sources.
-
-## Submission (optional)
-- Submit repo URL to NTU Blackboard.
+- Submit the URL of the GitHub Repository that contains your work to NTU black board.
+- Should you reference the work of your classmate(s) or online resources, give them credit by adding either the name of your classmate or URL.
 
 ## References
 - Java: https://docs.oracle.com/javase/

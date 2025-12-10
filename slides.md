@@ -2,22 +2,22 @@
 Instructions: Replace placeholders and delete instruction lines before publishing.
 
 ## Deck Link
-- **Google Slides URL:** [paste link]
-- **Owner:** [name/team]
+- **Google Slides URL:** [(https://docs.google.com/presentation/d/1GajU9gLUz8SDiIX2p8ItvP4eOWzctoUnQvco3_a3Q0g/edit?slide=id.p1#slide=id.p1)]
+- **Owner:** [AI-Engineering Team, NTU PACE]
 - **Access:** Viewer (students), Editor (instructors)
-- **Title format:** [Module.Lesson] Lesson Title — vX.Y (YYYY-MM-DD)
+- **Title format:** 3.2 Programming Fundamentals and Control Structures (Part 2) — v1.0 (2025-12-10)
 
-## Slide Outline (suggested)
-1. Cover (title, Module.Lesson, instructor)
-2. Objectives (2–4 bullets)
-3. Agenda (high-level flow)
-4. Topic 1
-5. Topic 1 — Demo
-6. Topic 2
-7. Topic 2 — Demo
-8. Hands-on / Lab (Activity)
-9. Summary / Key Takeaways
-10. Next Steps / Resources
+## Slide Overview
+**Total Slides:** 34
+**Duration:** 3 hours
+
+This deck covers:
+- **Part 1: Control Flow** - Decision-making (if-else), loops (for, while), jump statements (break, continue), Scanner class, and switch statements (traditional, enhanced, pattern matching)
+- **Part 2: Enums** - Defining and using enumerations for type-safe constants
+- **Part 3: Packages** - Code organization, built-in vs user-defined packages, imports
+- **Part 4: Methods** - Method structure, static vs instance methods, access modifiers, method overloading
+
+
 
 ## Export / Backup (optional)
 - Export **PDF** from Google Slides and save as `slides/lesson-slides.pdf`.

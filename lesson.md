@@ -2,7 +2,7 @@
 
 ## Lesson Overview
 
-This lesson introduces students to Java’s control flow mechanisms, demonstrating how programs make decisions and execute tasks repeatedly. Students will also learn how to organize code using packages and create reusable blocks of logic through methods. Together, these topics form the foundation for building structured and modular Java applications.
+This lesson introduces students to Java's control flow mechanisms, demonstrating how programs make decisions and execute tasks repeatedly. Students will also learn how to organize code using packages and create reusable blocks of logic through methods. Together, these topics form the foundation for building structured and modular Java applications.
 
 **Duration:** 3 hours  
 **Module:** 3.2  
@@ -14,38 +14,35 @@ This lesson introduces students to Java’s control flow mechanisms, demonstrati
 
 By the end of this lesson, learners will be able to:
 
-- Apply decision-making and looping constructs to control program execution.  
-- Use enhanced `switch` statements and pattern matching introduced in modern Java.  
-- Read and validate user input using the `Scanner` class.  
-- Organize classes within packages to maintain clean project structure.  
-- Define and call user-defined methods, including overloaded variants.  
+1. **Implement control flow constructs** (if-else, loops, switch, Scanner) to create dynamic Java programs that make decisions and handle repetitive tasks based on conditions.
+
+2. **Organize Java code using packages and methods** to build modular, maintainable applications following professional development practices.
+
+3. **Apply method overloading and access modifiers** to create flexible, reusable code while properly encapsulating functionality within classes.
 
 ---
 
-## Part 1: Control Flow Statements
+## Part 1: Control Flow Statements [70 minutes]
 
 Control flow statements determine the order in which individual statements, instructions, or functions are executed in a program. Instead of executing code sequentially from top to bottom, Java allows you to make decisions, repeat actions, or skip sections based on conditions. This makes programs dynamic and responsive to input or logic.
 
-Java’s control flow can be divided into three main categories:
+Java's control flow can be divided into three main categories:
 
 1. Decision Making Statements
-
-- if else
-- switch
+   - if else
+   - switch
 
 2. Loop Statements
-
-- for
-- while / do while
+   - for
+   - while / do while
 
 3. Jump/Branching Statements
-
-- break
-- continue
+   - break
+   - continue
 
 ### Creating the Class
 
-Let’s start by creating a class named `LearnControlFlow.java` where we’ll experiment with different control flow constructs.
+Let's start by creating a class named `LearnControlFlow.java` where we'll experiment with different control flow constructs.
 
 ```java
 public class LearnControlFlow {
@@ -58,7 +55,9 @@ public class LearnControlFlow {
 
 ---
 
-### `if` and `if-else` Statements
+### Decision-Making Statements [25 minutes]
+
+#### `if` and `if-else` Statements
 
 Decision-making is a core concept in programming. The `if` statement allows a block of code to run only when a specific condition evaluates to `true`. The optional `else` block executes when the condition is `false`.
 
@@ -75,7 +74,7 @@ The expression inside parentheses `(budget > expense)` is evaluated first.
 - If `true`, the statement inside the `if` block executes.  
 - If `false`, the statement inside the `else` block executes.  
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity **(10 minutes)**
 Ask the user for their marks and print:  
 - `"Excellent"` if marks > 85  
 - `"Good"` if marks are between 70–85  
@@ -83,7 +82,7 @@ Ask the user for their marks and print:
 
 ---
 
-### `if-else if` Ladder
+#### `if-else if` Ladder
 
 When multiple conditions need to be checked, Java provides the `if-else if` ladder. It evaluates conditions sequentially from top to bottom and executes the block corresponding to the first `true` condition.
 
@@ -105,7 +104,7 @@ Each condition is mutually exclusive — once a match is found, subsequent check
 
 ---
 
-### Comparing Strings
+#### Comparing Strings
 
 In Java, strings are objects, not primitive data types.  
 The `==` operator compares **object references** (memory locations), whereas `.equals()` compares **actual content**.
@@ -120,17 +119,17 @@ System.out.println(fruit1.equals(fruit2));  // true
 
 **Key takeaway:** Always use `.equals()` to compare string values.
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity **(8 minutes)**
 Ask the user for their favorite fruit.  
-If it’s `"apple"`, print `"Healthy choice!"`; otherwise print `"Nice fruit!"`.
+If it's `"apple"`, print `"Healthy choice!"`; otherwise print `"Nice fruit!"`.
 
 ---
 
-## Looping Constructs
+### Looping Constructs **(~20 minutes)**
 
 Loops allow repetitive execution of a block of code until a condition is met. They are useful for iterating over data, performing repeated calculations, or waiting for specific conditions.
 
-### `for` Loop
+#### `for` Loop
 
 Use a `for` loop when the number of iterations is known.
 
@@ -147,7 +146,7 @@ for (int i = 1; i <= 5; i++) {
 
 ---
 
-### `while` Loop
+#### `while` Loop
 
 Use a `while` loop when you do not know the exact number of iterations beforehand.
 
@@ -163,12 +162,14 @@ The condition is evaluated before each iteration; if false initially, the loop m
 
 ---
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity **(12 minutes)**
 Write a program to print numbers from 1 to 10 using both `for` and `while` loops.
 
 ---
 
-## `break` and `continue`
+### Jump Statements **(~15 minutes)**
+
+#### `break` and `continue`
 
 These statements alter the normal flow inside loops.
 
@@ -189,12 +190,12 @@ for (int i = 1; i <= 10; i++) {
 }
 ```
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity [8 minutes]
 Print numbers from 1 to 10, skipping 3 and stopping completely at 8.
 
 ---
 
-## Reading User Input — `Scanner`
+#### Reading User Input — `Scanner`
 
 Reading input dynamically allows programs to interact with users.  
 The `Scanner` class (from `java.util`) provides methods to read text, integers, and other types.
@@ -218,17 +219,17 @@ public class UserInputActivity {
 }
 ```
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity [10 minutes]
 Ask for a password. Keep prompting until the user enters `"java123"`.
 
 ---
 
-## `switch` Statements
+### Switch Statements [25 minutes]
 
 When multiple conditions depend on the same variable, using multiple `if-else` statements becomes verbose.  
 The `switch` statement provides a cleaner approach.
 
-### Traditional `switch`
+#### Traditional `switch`
 ```java
 String direction = "N";
 
@@ -246,7 +247,7 @@ switch (direction) {
 
 ---
 
-### Enhanced `switch` (Java 17+)
+#### Enhanced `switch` (Java 17+)
 
 The enhanced switch introduced modern syntax and eliminated `break` statements. It can also return a value using `yield`.
 
@@ -269,7 +270,7 @@ switch (direction) {
 }
 ```
 
-The `switch` expression can return the value directly as well. Using the month example from above:
+The `switch` expression can return the value directly as well. Using the month example:
 
 ```java
 String quarter = switch (month) {
@@ -299,12 +300,12 @@ String feedback = switch (rating) {
 System.out.println(feedback);
 ```
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity [10 minutes]
 Write a switch expression that takes a month name and returns its quarter (Q1–Q4).
 
 ---
 
-## Pattern Matching in `switch` (Java 21)
+##  Pattern Matching in `switch` (Java 21) [OPTIONAL]
 
 Pattern Matching in modern Java allows checking both **type** and **value** in one compact switch block.
 
@@ -324,7 +325,7 @@ Write a program that checks whether an object is a number, a string, or null usi
 
 ---
 
-## Part 2: Enums in Control Flow
+## Part 2: Enums in Control Flow [12 minutes]
 
 Java provides a special data type called `enum` to support enumeration. It is used to define a collection of constants. Enums are useful to represent a fixed set of values, such as days of the week, months of the year, etc.
 Enums represent a fixed set of named constants, it is more type safe than using `String` or `int` variables.
@@ -336,12 +337,12 @@ Direction dir = Direction.N;
 System.out.println("Direction: " + dir);
 ```
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity [8 minutes]
 Create an enum `TrafficLight` with constants `RED`, `YELLOW`, and `GREEN` and print corresponding actions.
 
 ---
 
-### Switch with Enums
+#### Switch with Enums
 
 Enums integrate seamlessly with switch expressions.
 
@@ -358,7 +359,7 @@ switch (d) {
 
 ---
 
-## Part 3: Packages
+## Part 3: Packages [28 minutes]
 
 ### What is a Package?
 
@@ -372,6 +373,7 @@ Packages help us to organize our code. It also helps to prevent naming conflicts
 There are two types of packages in Java: **built-in packages** and **user-defined packages**.
 
 ### Types of Packages
+
 -  **Built-in packages** in Java such as `java.lang`, `java.util`, etc. For example, the `java.util` package contains the `Scanner` and `ArrayList` classes. 
 The `java.lang` package is automatically imported into every Java program. As it contains the `String` class, this is why we can use the `String` class without importing it.
 
@@ -380,16 +382,20 @@ As you may have noticed, packages in the Java language begin with `java` or `jav
 - **User-defined packages** created by developers.
 We can also create our own packages to organize our code.
 
+###  Package Naming Conventions [SELF-STUDY]
+
 The package declaration should be the first line of code in a Java source file. It is declared using the `package` keyword followed by the package name.
 
 It is common to use the reverse domain name of the organization to name the package. For example, if the organization's domain name is `companyname.com`, then the package name should be `com.companyname`. In this case, the folder structure should be `com/companyname`.
 
 The naming convention for packages is to use all lowercase letters. If the package name contains multiple words, we can use underscores to separate the words. For example, `com.companyname.project_name` is a valid package name.
 
+---
+
+### Creating a Package
+
 We can try creating a new folder called `mypackage` and adding a new file called `HelloWorld.java` with the following code:
 
-
-### Example: Creating a Package
 ```java
 package mypackage;
 
@@ -417,7 +423,7 @@ Try removing the line `package mypackage;` and see what happens when you try to 
 
 ### Importing Packages
 
-To use a class or interface from a package, we need to import the package.We can also import all the classes and interfaces in a package using the `*` wildcard. The syntax for importing a package is:
+To use a class or interface from a package, we need to import the package. We can also import all the classes and interfaces in a package using the `*` wildcard. The syntax for importing a package is:
 
 ```java
 import java.util.Scanner;
@@ -426,13 +432,13 @@ import java.util.*;
 
 These allow you to use classes defined in other packages.
 
-### 👨‍💻 Activity
+### 👨‍💻 Activity [10 minutes]
 Create a `mypackage` folder, add `HelloWorld.java`, and run it in VS Code.  
 Observe that removing the package line leads to compilation issues.
 
 ---
 
-## Part 4: Methods
+## Part 4: Methods [55 minutes]
 
 ### What Are Methods?
 
@@ -446,7 +452,6 @@ Methods promote modularity, reduce redundancy, and make code easier to maintain.
 - **User-defined methods:** Written by developers for specific needs.
 
 Let's add a method `addNumbers` into our `MyApp.java` file. This should be within the class but outside the `main` method.
-
 
 Example:
 ```java
@@ -486,7 +491,7 @@ public static int add(int a, int b) {
 
 - **Access Modifier:** Defines where the method is accessible (`public`, `private`, etc.)  
 - **Return Type:** Data type of value returned (`void` means no return).  
-- **Parameters:** Variables used to pass data into the method.  If the method does not require any parameters, we can leave the parentheses empty.
+- **Parameters:** Variables used to pass data into the method. If the method does not require any parameters, we can leave the parentheses empty.
 
 We may sometimes use the terms **parameters** and **arguments** interchangeably but there is a difference between the two. **Parameters** are the variables that are declared in the method signature. **Arguments** are the actual values that are passed into the method.
 
@@ -543,7 +548,6 @@ myCar.drive();  // instance
 
 An **access modifier** is a keyword that determines the accessibility of a method. There are four access modifiers in Java: `public`, `private`, `protected`, and `default`.
 
-
 | Modifier | Scope |
 |-----------|--------|
 | `public` | Accessible everywhere |
@@ -593,7 +597,6 @@ A class can have multiple methods with the same name but declared with different
 
 Java can resolve which method it needs to execute, based on the arguments being passed.
 
-
 ```java
 public static double calcBonus(double salary) {
   return salary * 0.1;
@@ -608,7 +611,7 @@ public static double calcBonus(double salary, double rate) {
 1. Method name must be identical.  
 2. Parameter list must differ (in number or type).  
 
-### Valid vs Invalid Overloaded Method Signatures
+###  Valid vs Invalid Overloaded Method Signatures [SELF-STUDY]
 
 The **method signature** consists of the method name and the parameter list. The return type is not part of the method signature.
 
@@ -624,7 +627,10 @@ The **method signature** consists of the method name and the parameter list. The
 9 public static int myFn(int a, int b, int c) // ❌ same parameter types as 8
 ```
 
+**In class:** Show a quick example of valid vs invalid overloading (2-3 examples max).
+
 ---
+
 ### Method Overloading Example
 
 Create a `LearnMethods.java` file and code along.
@@ -640,7 +646,6 @@ public static double calcBonus(double salary) {
 We can call this method in the `main` method.
 
 ```java
-
 System.out.println("Employee bonus:" + calcBonus(5000));
 ```
 
@@ -667,7 +672,7 @@ System.out.printf("Staff Bonus: $%.2f\n", calcBonus(5000, 0.2));
 System.out.printf("CEO Bonus: $%.2f\n", calcBonus(20000, 1.5));
 ```
 
-### 👨‍💻 Activity 1 - Calculate Bonus
+### 👨‍💻 Activity 1 - Calculate Bonus [12 minutes]
 
 Create another overloaded method for `calcBonus` that takes in the salary as well as an `enum` `Position` with the following values: `STAFF`, `MANAGER`, `CEO`.
 
@@ -677,13 +682,13 @@ The bonuses should be calculated as follows:
 - Manager: 20% of salary
 - CEO: 300% of salary
 
-### 👨‍💻 Activity 2 - Calculate Bonus for Variable Wage Worker
+### 👨‍💻 Activity 2 - Calculate Bonus for Variable Wage Worker [10 minutes]
 
 Now we have a variable wage worker, and we store his salary in an array. We want to calculate his bonus based on his monthly average salary. The worker should only get a bonus if he has worked for at least 6 months.
 
 Create an overloaded method that takes in an array of salaries and calculates the bonus based on the average salary.
 
-### 👨‍💻 Activity 3 - Vending Machine
+###  👨‍💻 Activity 3 - Vending Machine [OPTIONAL]
 
 Create a new class `VendingMachine`. You may do it in the same file or create a new file.
 
@@ -699,7 +704,7 @@ enum EPayment {
 
 This overloaded `makePayment` method will accept the enum and call the respective `private` method i.e. `connectPayNow()`, `connectGrabPay()`, `connectFavePay()`. You can just return `true` or `false` in these methods for simulating the payment status.
 
-Test code
+Test code:
 
 ```java
 VendingMachine myVendingMachine = new VendingMachine();
@@ -711,6 +716,21 @@ myVendingMachine.makePayment(EPayment.PAYNOW);
 
 ---
 
+## Lesson Summary [10 minutes]
+
+**Key Takeaways:**
+- Control flow statements (if-else, loops, switch) enable dynamic program execution
+- Scanner class allows interactive user input
+- Packages organize code and prevent naming conflicts
+- Methods promote code reusability and modularity
+- Method overloading provides flexibility with same method names
+- Access modifiers control visibility and encapsulation
+
+**Next Steps:**
+- Complete the assignment
+- Review self-study materials for deeper understanding
+- Practice with additional exercises
+
+---
+
 END
-
-

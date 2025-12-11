@@ -26,13 +26,13 @@ By the end of the lesson, you will be able to
 | Duration | What                    | How or Why                                                       |
 | -------- | ----------------------- | ---------------------------------------------------------------- |
 | - 5mins  | Start zoom session      | So that learners can join early and start class on time.         |
-| 15 mins  | Activity                | Recap on self-study and prework materials.                       |
-| 50 mins  | Code-along              | Part 1: Control Flow Statements (if, loops, switch, Scanner).    |
-|          | **1 HR MARK**           |                                                                  |
-| 15 mins  | Code-along              | Part 2: Enums in Control Flow.                                   |
-| 35 mins  | Code-along              | Part 3: Packages (built-in, user-defined, imports).              |
-| 10 mins  | Break                   |                                                                  |
-|          | **2 HR MARK**           |                                                                  |
-| 50 mins  | Code-along              | Part 4: Methods (static/instance, access modifiers, overloading).|
-| 10 mins  | Briefing / Q&A          | Brief on references, assignment and Q&A.                         |
+| 10 mins  | Activity                | Recap on self-study and prework materials.                       |
+| 70 mins  | Code-along              | Part 1: Control Flow Statements (if, loops, switch, Scanner).    |
+|          | **1 HR 25 MIN MARK**    |                                                                  |
+| 12 mins  | Code-along              | Part 2: Enums in Control Flow.                                   |
+| 28 mins  | Code-along              | Part 3: Packages (built-in, user-defined, imports).              |
+| 5 mins   | Break                   |                                                                  |
+|          | **2 HR 20 MIN MARK**    |                                                                  |
+| 55 mins  | Code-along              | Part 4: Methods (static/instance, access modifiers, overloading).|
+| 10 mins  | Summary / Q&A           | Summarize key takeaways and Q&A.                                 |
 |          | **END CLASS 3 HR MARK** |                                                                  |

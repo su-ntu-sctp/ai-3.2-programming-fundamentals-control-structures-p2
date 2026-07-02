@@ -6,7 +6,7 @@
 - **Time:** ~10–15 minutes
 - **Scoring:** 1 point each (unless stated)
 
-## Questions
+## Questions:
 
 ### Q1 (MCQ)
 

@@ -2,47 +2,35 @@
 
 ## Lesson Overview
 
-This lesson introduces students to Java's control flow mechanisms, demonstrating how programs make decisions and execute tasks repeatedly. Students will also learn how to organize code using packages and create reusable blocks of logic through methods. Together, these topics form the foundation for building structured and modular Java applications.
+This lesson introduces Java's control flow mechanisms — how programs make decisions and execute tasks repeatedly. You will also learn how to organize code using packages and create reusable blocks of logic through methods. Together, these topics form the foundation for building structured, modular Java applications.
 
-**Duration:** 3 hours  
-**Module:** 3.2  
-**Prerequisites:** Basic Java syntax, variables, and operators  
+**Duration:** 3 hours
+**Module:** 3.2
+**Prerequisites:** Basic Java syntax, variables, and operators
 
 ---
 
 ## Lesson Objectives
 
-By the end of this lesson, learners will be able to:
+By the end of this lesson, you will be able to:
 
-1. **Implement control flow constructs** (if-else, loops, switch, Scanner) to create dynamic Java programs that make decisions and handle repetitive tasks based on conditions.
-
-2. **Organize Java code using packages and methods** to build modular, maintainable applications following professional development practices.
-
-3. **Apply method overloading and access modifiers** to create flexible, reusable code while properly encapsulating functionality within classes.
+1. **Implement control flow constructs** (if-else, loops, switch, Scanner) to create dynamic Java programs that make decisions and handle repetitive tasks.
+2. **Organize Java code using packages and methods** to build modular, maintainable applications.
+3. **Apply method overloading and access modifiers** to create flexible, reusable, properly encapsulated code.
 
 ---
 
-## Part 1: Control Flow Statements [70 minutes]
+## Part 1: Control Flow Statements
 
-Control flow statements determine the order in which individual statements, instructions, or functions are executed in a program. Instead of executing code sequentially from top to bottom, Java allows you to make decisions, repeat actions, or skip sections based on conditions. This makes programs dynamic and responsive to input or logic.
+Control flow statements determine the order in which statements execute. Instead of running top to bottom every time, Java lets you make decisions, repeat actions, or skip sections based on conditions — which is what makes a program dynamic rather than a fixed script.
 
-Java's control flow can be divided into three main categories:
+Java's control flow falls into three categories:
 
-1. Decision Making Statements
-   - if else
-   - switch
-
-2. Loop Statements
-   - for
-   - while / do while
-
-3. Jump/Branching Statements
-   - break
-   - continue
+1. **Decision Making** — `if-else`, `switch`
+2. **Loops** — `for`, `while` / `do-while`
+3. **Jump/Branching** — `break`, `continue`
 
 ### Creating the Class
-
-Let's start by creating a class named `LearnControlFlow.java` where we'll experiment with different control flow constructs.
 
 ```java
 public class LearnControlFlow {
@@ -55,36 +43,9 @@ public class LearnControlFlow {
 
 ---
 
-### Decision-Making Statements [25 minutes]
+### Decision-Making: `if`, `if-else`, and `if-else if`
 
-#### `if` and `if-else` Statements
-
-Decision-making is a core concept in programming. The `if` statement allows a block of code to run only when a specific condition evaluates to `true`. The optional `else` block executes when the condition is `false`.
-
-```java
-if (budget > expense) {
-  System.out.println("You are within budget");
-} else {
-  System.out.println("You are over budget");
-}
-```
-
-**Explanation:**  
-The expression inside parentheses `(budget > expense)` is evaluated first.  
-- If `true`, the statement inside the `if` block executes.  
-- If `false`, the statement inside the `else` block executes.  
-
-### 👨‍💻 Activity **(10 minutes)**
-Ask the user for their marks and print:  
-- `"Excellent"` if marks > 85  
-- `"Good"` if marks are between 70–85  
-- `"Needs Improvement"` otherwise  
-
----
-
-#### `if-else if` Ladder
-
-When multiple conditions need to be checked, Java provides the `if-else if` ladder. It evaluates conditions sequentially from top to bottom and executes the block corresponding to the first `true` condition.
+The `if` statement runs a block of code only when a condition evaluates to `true`. An `else` block runs when it's `false`. When you have more than two possibilities, you chain conditions using `if-else if` — Java checks each condition top to bottom and runs the block for the **first** one that's `true`; once a match is found, the rest are skipped.
 
 ```java
 int score = 75;
@@ -100,14 +61,11 @@ if (score > 90) {
 }
 ```
 
-Each condition is mutually exclusive — once a match is found, subsequent checks are skipped.
-
 ---
 
-#### Comparing Strings
+### Comparing Strings
 
-In Java, strings are objects, not primitive data types.  
-The `==` operator compares **object references** (memory locations), whereas `.equals()` compares **actual content**.
+In Java, strings are objects, not primitive data types. This matters because the `==` operator compares **object references** (whether two variables point to the same memory location), while `.equals()` compares **actual content**.
 
 ```java
 String fruit1 = "apple";
@@ -117,38 +75,24 @@ System.out.println(fruit1 == fruit2);       // false
 System.out.println(fruit1.equals(fruit2));  // true
 ```
 
-**Key takeaway:** Always use `.equals()` to compare string values.
-
-### 👨‍💻 Activity **(8 minutes)**
-Ask the user for their favorite fruit.  
-If it's `"apple"`, print `"Healthy choice!"`; otherwise print `"Nice fruit!"`.
+`fruit1` and `fruit2` hold the same text, but they are different objects in memory, so `==` returns `false`. **Always use `.equals()` when comparing string values** — this is a common bug source in real applications.
 
 ---
 
-### Looping Constructs **(~20 minutes)**
+### Loops: `for` and `while`
 
-Loops allow repetitive execution of a block of code until a condition is met. They are useful for iterating over data, performing repeated calculations, or waiting for specific conditions.
+Loops let you repeat a block of code without writing it out multiple times.
 
-#### `for` Loop
-
-Use a `for` loop when the number of iterations is known.
+Use a **`for` loop** when you know the number of iterations in advance:
 
 ```java
 for (int i = 1; i <= 5; i++) {
   System.out.println("i = " + i);
 }
 ```
+`int i = 1` initializes the counter, `i <= 5` is checked before every iteration, and `i++` increments the counter after each loop.
 
-**Explanation:**  
-- `int i = 1` initializes the counter.  
-- `i <= 5` is the condition checked before every iteration.  
-- `i++` increments the counter after each loop.  
-
----
-
-#### `while` Loop
-
-Use a `while` loop when you do not know the exact number of iterations beforehand.
+Use a **`while` loop** when the number of iterations depends on a condition that isn't known ahead of time:
 
 ```java
 int i = 1;
@@ -157,48 +101,32 @@ while (i <= 5) {
   i++;
 }
 ```
+The condition is checked *before* each iteration — if it's `false` from the start, the loop body never runs.
 
-The condition is evaluated before each iteration; if false initially, the loop may not execute at all.
-
----
-
-### 👨‍💻 Activity **(12 minutes)**
-Write a program to print numbers from 1 to 10 using both `for` and `while` loops.
+### 👨‍💻 Activity
+Write a program to print numbers from 1 to 10 using both a `for` loop and a `while` loop.
 
 ---
 
-### Jump Statements **(~15 minutes)**
+### Jump Statements: `break` and `continue`
 
-#### `break` and `continue`
-
-These statements alter the normal flow inside loops.
-
-- **`break`** exits the loop immediately.  
-- **`continue`** skips the remaining code in the loop for that iteration and proceeds to the next one.
+These statements change the normal flow inside a loop:
+- **`break`** exits the loop immediately, skipping any remaining iterations.
+- **`continue`** skips only the rest of the current iteration and moves on to the next one.
 
 ```java
 for (int i = 1; i <= 10; i++) {
-  if (i == 5) break; // exit loop
+  if (i == 3) continue; // skip printing 3, but keep looping
+  if (i == 8) break;    // stop the loop entirely once i reaches 8
   System.out.println(i);
 }
 ```
 
-```java
-for (int i = 1; i <= 10; i++) {
-  if (i == 3) continue; // skip 3
-  System.out.println(i);
-}
-```
-
-### 👨‍💻 Activity [8 minutes]
-Print numbers from 1 to 10, skipping 3 and stopping completely at 8.
-
 ---
 
-#### Reading User Input — `Scanner`
+### Reading User Input — `Scanner`
 
-Reading input dynamically allows programs to interact with users.  
-The `Scanner` class (from `java.util`) provides methods to read text, integers, and other types.
+Programs often need to react to input typed by a user while running. The `Scanner` class (from `java.util`) reads text, numbers, and other data types from the keyboard.
 
 ```java
 import java.util.Scanner;
@@ -219,17 +147,16 @@ public class UserInputActivity {
 }
 ```
 
-### 👨‍💻 Activity [10 minutes]
+### 👨‍💻 Activity
 Ask for a password. Keep prompting until the user enters `"java123"`.
 
 ---
 
-### Switch Statements [25 minutes]
+## Switch Statements
 
-When multiple conditions depend on the same variable, using multiple `if-else` statements becomes verbose.  
-The `switch` statement provides a cleaner approach.
+When multiple conditions all depend on the same variable, a chain of `if-else` statements gets verbose. The `switch` statement handles this more cleanly by matching a variable against a list of possible values.
 
-#### Traditional `switch`
+### Traditional `switch`
 ```java
 String direction = "N";
 
@@ -244,12 +171,11 @@ switch (direction) {
     System.out.println("Invalid input");
 }
 ```
+Each `case` needs a `break`, otherwise execution "falls through" into the next case — a classic source of bugs in older Java code.
 
----
+### Enhanced `switch` (Java 17+)
 
-#### Enhanced `switch` (Java 17+)
-
-The enhanced switch introduced modern syntax and eliminated `break` statements. It can also return a value using `yield`.
+The enhanced switch uses `->` instead of `case:`/`break`, removing the fall-through problem entirely. It can also return a value directly using `yield`.
 
 ```java
 String direction = "E";
@@ -261,7 +187,8 @@ switch (direction) {
   default -> System.out.println("Invalid input");
 }
 ```
-As with the traditional switch statement, cases can be combined as well.
+
+Cases can be combined with a comma:
 
 ```java
 switch (direction) {
@@ -270,7 +197,7 @@ switch (direction) {
 }
 ```
 
-The `switch` expression can return the value directly as well. Using the month example:
+A switch can also be used as an **expression**, returning a value that you assign directly to a variable:
 
 ```java
 String quarter = switch (month) {
@@ -284,7 +211,8 @@ String quarter = switch (month) {
 System.out.println("quarter: " + quarter);
 ```
 
-### To customize our return value, we can use the `yield` keyword.
+When a case needs more than one line of logic before returning a value, use `yield` inside a block:
+
 ```java
 int rating = 5;
 
@@ -300,14 +228,14 @@ String feedback = switch (rating) {
 System.out.println(feedback);
 ```
 
-### 👨‍💻 Activity [10 minutes]
+### 👨‍💻 Activity
 Write a switch expression that takes a month name and returns its quarter (Q1–Q4).
 
 ---
 
-##  Pattern Matching in `switch` (Java 21) [OPTIONAL]
+## Pattern Matching in `switch` (Java 21) — *optional, time permitting*
 
-Pattern Matching in modern Java allows checking both **type** and **value** in one compact switch block.
+Pattern matching lets a switch check both the **type** and the **value** of an object in one compact block, instead of writing separate `instanceof` checks.
 
 ```java
 static String format(Object obj) {
@@ -320,15 +248,11 @@ static String format(Object obj) {
 }
 ```
 
-### 👨‍💻 Activity
-Write a program that checks whether an object is a number, a string, or null using pattern matching.
-
 ---
 
-## Part 2: Enums in Control Flow [12 minutes]
+## Part 2: Enums in Control Flow
 
-Java provides a special data type called `enum` to support enumeration. It is used to define a collection of constants. Enums are useful to represent a fixed set of values, such as days of the week, months of the year, etc.
-Enums represent a fixed set of named constants, it is more type safe than using `String` or `int` variables.
+An **enum** defines a fixed set of named constants — useful whenever a value should only ever be one of a known, limited set of options (days of the week, statuses, directions). Enums are more type-safe than using `String` or `int` for the same purpose, because the compiler won't let you assign anything outside the defined set.
 
 ```java
 enum Direction { N, S, E, W }
@@ -337,14 +261,12 @@ Direction dir = Direction.N;
 System.out.println("Direction: " + dir);
 ```
 
-### 👨‍💻 Activity [8 minutes]
-Create an enum `TrafficLight` with constants `RED`, `YELLOW`, and `GREEN` and print corresponding actions.
+### 👨‍💻 Activity
+Create an enum `TrafficLight` with constants `RED`, `YELLOW`, and `GREEN`, and print the corresponding action for each (e.g. `RED` → "Stop").
 
----
+### Switch with Enums
 
-#### Switch with Enums
-
-Enums integrate seamlessly with switch expressions.
+Enums work naturally with switch expressions — no quotes needed, and the compiler can warn you if you miss a case:
 
 ```java
 Direction d = Direction.W;
@@ -359,42 +281,17 @@ switch (d) {
 
 ---
 
-## Part 3: Packages [28 minutes]
+## Part 3: Packages
 
-### What is a Package?
+A **package** is a collection of related classes and interfaces — similar to a folder that groups related files. Packages help organize large codebases and, importantly, prevent naming conflicts: two classes with the same name can coexist as long as they live in different packages.
 
-A **package** is a collection of related classes and interfaces, similar to folders organizing files on your computer.  
-They help group logically related code, avoid naming conflicts, and make large projects easier to manage.
-
-### Why Use Packages?
-
-Packages help us to organize our code. It also helps to prevent naming conflicts. For example, if we have two classes with the same name, we can place them in different packages to avoid naming conflicts.
-
-There are two types of packages in Java: **built-in packages** and **user-defined packages**.
-
-### Types of Packages
-
--  **Built-in packages** in Java such as `java.lang`, `java.util`, etc. For example, the `java.util` package contains the `Scanner` and `ArrayList` classes. 
-The `java.lang` package is automatically imported into every Java program. As it contains the `String` class, this is why we can use the `String` class without importing it.
-
-As you may have noticed, packages in the Java language begin with `java` or `javax`.
- 
-- **User-defined packages** created by developers.
-We can also create our own packages to organize our code.
-
-###  Package Naming Conventions [SELF-STUDY]
-
-The package declaration should be the first line of code in a Java source file. It is declared using the `package` keyword followed by the package name.
-
-It is common to use the reverse domain name of the organization to name the package. For example, if the organization's domain name is `companyname.com`, then the package name should be `com.companyname`. In this case, the folder structure should be `com/companyname`.
-
-The naming convention for packages is to use all lowercase letters. If the package name contains multiple words, we can use underscores to separate the words. For example, `com.companyname.project_name` is a valid package name.
-
----
+There are two types:
+- **Built-in packages**, such as `java.util` (contains `Scanner`, `ArrayList`) and `java.lang` (contains `String`, and is automatically imported into every Java program — that's why you can use `String` without an import statement). Java's own packages begin with `java` or `javax`.
+- **User-defined packages**, which you create yourself to organize your own code.
 
 ### Creating a Package
 
-We can try creating a new folder called `mypackage` and adding a new file called `HelloWorld.java` with the following code:
+The `package` declaration must be the first line in the file:
 
 ```java
 package mypackage;
@@ -405,74 +302,49 @@ public class HelloWorld {
   }
 }
 ```
-To compile and run the code, we can use the "Run Java" button in VS Code.
 
-Alternatively, we can compile and run it in the terminal:
+To compile and run from the terminal, you need to be in the parent directory of `mypackage` and reference the fully qualified class name:
 
 ```bash
 javac HelloWorld.java
-```
-
-To run the file, we need to be in the parent directory of the package. In this case, we need to be in the parent directory of `mypackage` and we need to specify the fully qualified name of the class:
-
-```bash
 java mypackage.HelloWorld
 ```
 
-Try removing the line `package mypackage;` and see what happens when you try to compile the code.
+If you remove the `package mypackage;` line, the class no longer belongs to that package and running it with the qualified name will fail — a good way to see why the declaration matters.
 
 ### Importing Packages
 
-To use a class or interface from a package, we need to import the package. We can also import all the classes and interfaces in a package using the `*` wildcard. The syntax for importing a package is:
+To use a class from another package, import it — either the specific class, or every class in the package using `*`:
 
 ```java
 import java.util.Scanner;
 import java.util.*;
 ```
 
-These allow you to use classes defined in other packages.
+**Package naming convention (self-study):** it's common to use your organization's reverse domain name — e.g. `companyname.com` becomes package `com.companyname`, matching folder structure `com/companyname`. Package names are all lowercase; use underscores to separate words if needed (`com.companyname.project_name`).
 
-### 👨‍💻 Activity [10 minutes]
-Create a `mypackage` folder, add `HelloWorld.java`, and run it in VS Code.  
-Observe that removing the package line leads to compilation issues.
+### 👨‍💻 Activity
+Create a `mypackage` folder, add `HelloWorld.java` inside it, and run it. Then remove the `package` line and observe what happens.
 
 ---
 
-## Part 4: Methods [55 minutes]
+## Part 4: Methods
 
-### What Are Methods?
+A **method** is a named, reusable block of code that can be invoked, optionally accepting input (parameters) and optionally returning a value. Methods reduce repetition and make code easier to maintain and test.
 
-A method is a block of executable code which can be invoked. You can pass an optional set of arguments to the method. It may also optionally return data.
+Java also provides many **predefined methods** (`System.out.println`, `Math.max`) alongside the **user-defined methods** you write yourself.
 
-Methods promote modularity, reduce redundancy, and make code easier to maintain.
+> Note: "method" and "function" are often used interchangeably, but strictly speaking, a **function** is a static method that belongs to the class itself, while a **method** is a non-static (instance) method that belongs to an object. `Arrays.toString()` is technically a function; `myString.toUpperCase()` is technically a method.
 
-### Predefined vs User-defined Methods
-
-- **Predefined methods:** Provided by Java (e.g., `System.out.println`, `Math.max`).  
-- **User-defined methods:** Written by developers for specific needs.
-
-Let's add a method `addNumbers` into our `MyApp.java` file. This should be within the class but outside the `main` method.
-
-Example:
 ```java
 public static void addNumbers(int a, int b) {
   System.out.println(a + b);
 }
 ```
-Inside the `main` method, we can call our method by using the method name and passing in the arguments.
-Call it using:
+Called from `main` as:
 ```java
 addNumbers(5, 10);
 ```
-
-In Java, the terms **method** and **function** are sometimes used interchangeably but there are a few differences between the two.
-
-- functions are static methods that belong to a class
-- methods are usually non-static (instance) methods that belong to an object (instance of a class)
-
-For example, `Arrays.toString()` can be considered a function because it is a static method that belongs to the Arrays class. On the other hand, `myString.toUpperCase()` is a method because it is a non-static method that belongs to the String class.
-
----
 
 ### Method Structure
 
@@ -481,29 +353,22 @@ For example, `Arrays.toString()` can be considered a function because it is a st
   // method body
 }
 ```
-
-Example:
 ```java
 public static int add(int a, int b) {
   return a + b;
 }
 ```
+- **Access modifier** — controls where the method can be called from.
+- **Return type** — the data type of the value the method sends back (`void` means it returns nothing).
+- **Parameters** — variables declared in the method signature that receive input. If a method needs no input, the parentheses stay empty.
 
-- **Access Modifier:** Defines where the method is accessible (`public`, `private`, etc.)  
-- **Return Type:** Data type of value returned (`void` means no return).  
-- **Parameters:** Variables used to pass data into the method. If the method does not require any parameters, we can leave the parentheses empty.
-
-We may sometimes use the terms **parameters** and **arguments** interchangeably but there is a difference between the two. **Parameters** are the variables that are declared in the method signature. **Arguments** are the actual values that are passed into the method.
+Note the distinction: **parameters** are the variables declared in the method definition; **arguments** are the actual values you pass in when calling it.
 
 ---
 
 ### Static vs Instance Methods
 
-- **Static methods** 
-The `static` keyword is used to declare a static method. A static method belongs to the class and not to the object (instance of the class). This means that we can call a static method without creating an object of the class.
-
-- **Instance methods** 
-An instance method belongs to an object (instance of a class). This means that we need to create an object of the class before we can call an instance method.
+A **static** method belongs to the class itself, not to any particular object — you can call it directly on the class, without creating an instance. An **instance** method belongs to an object, so you must create an instance of the class first before calling it.
 
 ```java
 public class Car {
@@ -517,47 +382,35 @@ public class Car {
 }
 ```
 
-We can call these methods in the `main` method of the `MyApp` class.
-
 ```java
 public class MyApp {
   public static void main(String[] args) {
-    Car.aboutCar();
+    Car.aboutCar();          // static — called on the class
     Car car = new Car();
-    car.drive();
+    car.drive();             // instance — called on an object
   }
 }
 ```
 
-Try to call the `drive()` method without creating an object of the `Car` class and see what happens.
+Calling `Car.drive()` directly (without creating an instance) will not compile — `drive()` needs an object to act on, since instance methods typically work with instance-specific data.
 
-```java
-Car.drive();
-```
-
-Usage:
-```java
-Car.aboutCar(); // static
-Car myCar = new Car();
-myCar.drive();  // instance
-```
+### 👨‍💻 Activity
+Extend the `Car` class with one more static method and one more instance method of your choice, and call both correctly from `MyApp`.
 
 ---
 
 ### Access Modifiers
 
-An **access modifier** is a keyword that determines the accessibility of a method. There are four access modifiers in Java: `public`, `private`, `protected`, and `default`.
+An **access modifier** controls where a method (or field) can be accessed from. Java has four:
 
 | Modifier | Scope |
 |-----------|--------|
 | `public` | Accessible everywhere |
 | `private` | Only within the same class |
-| `protected` | Within same class + subclasses |
-| (default) | Within same package |
+| `protected` | Within the same class and its subclasses |
+| (default, no keyword) | Within the same package |
 
-We may not always want our methods to be public. For example, we may want to restrict access to certain methods to prevent other classes from modifying the data in our class. In this case, we can use the `private` access modifier.
-
-In our `Car` example, we want to restrict some of these methods because they should not be controlled directly. Let's change these 3 methods to be `private`.
+Restricting access matters when you don't want other classes reaching in and modifying internal data or calling internal steps directly. For example, in a `Car` class, some setup steps shouldn't be triggered independently — only as part of starting the engine:
 
 ```java
 private void startAircon() {
@@ -571,13 +424,7 @@ private void startRadio() {
 private void checkSeatBelts() {
   System.out.println("🪑 Seat belts checked!");
 }
-```
 
-Now if you try to call these methods in the `main` method of another class, say `MyApp` class, you will get an error. This is correct, because we should not be able to call these methods directly but only from within the class.
-
-In this case, we want `startEngine()` to be the only method that can be called directly, which will in turn call these `private` methods.
-
-```java
 public void startEngine() {
   System.out.println("🚗 Starting engine...");
   System.out.println("✅ Engine started!");
@@ -587,15 +434,13 @@ public void startEngine() {
 }
 ```
 
-Our public method `startEngine()` will now call these private methods. We have now hidden some methods from public access. This is a concept called **encapsulation**, which we will cover in more detail in the next lesson.
+Here, `startEngine()` is the only public entry point; the three private methods can only be called from within the class. This is a first look at **encapsulation** — hiding internal details and exposing only what's necessary — which is covered in more depth in the next lesson.
 
 ---
 
 ### Method Overloading
 
-A class can have multiple methods with the same name but declared with different parameters. This is called **method overloading**, which means providing 2 or more separate methods in a class with the same name but different parameters. This allows us to have different implementations of the same method.
-
-Java can resolve which method it needs to execute, based on the arguments being passed.
+**Method overloading** means defining two or more methods in the same class with the same name but different parameter lists, so each version handles a different set of inputs. Java decides which version to run based on the arguments passed at the call site.
 
 ```java
 public static double calcBonus(double salary) {
@@ -608,93 +453,50 @@ public static double calcBonus(double salary, double rate) {
 ```
 
 **Rules for overloading:**
-1. Method name must be identical.  
-2. Parameter list must differ (in number or type).  
+1. The method name must be identical.
+2. The parameter list must differ — in number of parameters, or in type.
 
-###  Valid vs Invalid Overloaded Method Signatures [SELF-STUDY]
-
-The **method signature** consists of the method name and the parameter list. The return type is not part of the method signature.
+The **method signature** is the method name plus its parameter list; the return type is *not* part of the signature, so you can't overload two methods that differ only in return type.
 
 ```java
-1 public static void myFn(int a)
-2 public static void myFn(int b) // ❌ same parameter type as 1
-3 public static void myFn(float a) // ✅
-4 public static void myFn(double a) // ✅
-5 public static void myFn(int a, int b) // ✅
-6 public static void myFn(int b, int a) // ❌ same parameter types as 5
-7 public static void myFn(int a, float b) // ✅
-8 public static void myFn(int a, int b, int c) // ✅
-9 public static int myFn(int a, int b, int c) // ❌ same parameter types as 8
+public static void myFn(int a)
+public static void myFn(int a, float b)   // ✅ different parameter list
+public static void myFn(float a)          // ✅ different parameter type
+public static void myFn(int b)            // ❌ same signature as the first — won't compile
 ```
-
-**In class:** Show a quick example of valid vs invalid overloading (2-3 examples max).
-
----
-
-### Method Overloading Example
-
-Create a `LearnMethods.java` file and code along.
-
-Let's create a method `calcBonus()` that calculates the bonus based on a salary.
-
-```java
-public static double calcBonus(double salary) {
-  return salary * 0.1;
-}
-```
-
-We can call this method in the `main` method.
 
 ```java
 System.out.println("Employee bonus:" + calcBonus(5000));
-```
-
-Now let's create an overloaded method `calcBonus()` that calculates the bonus based on the salary and the bonus rate.
-
-```java
-public static double calcBonus(double salary, double bonusRate) {
-  return salary * bonusRate;
-}
-```
-
-We can call same method name with different parameters.
-
-```java
 System.out.println("Staff Bonus: " + calcBonus(5000, 0.2));
 System.out.println("CEO Bonus: " + calcBonus(20000, 1.5));
 ```
 
-Sidenote: we can use `printf` to format the decimal output.
-https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Format-double-Java-printf-example
+You can format decimal output cleanly with `printf`:
 
 ```java
 System.out.printf("Staff Bonus: $%.2f\n", calcBonus(5000, 0.2));
 System.out.printf("CEO Bonus: $%.2f\n", calcBonus(20000, 1.5));
 ```
 
-### 👨‍💻 Activity 1 - Calculate Bonus [12 minutes]
-
-Create another overloaded method for `calcBonus` that takes in the salary as well as an `enum` `Position` with the following values: `STAFF`, `MANAGER`, `CEO`.
-
-The bonuses should be calculated as follows:
-
+### 👨‍💻 Activity — Calculate Bonus by Position
+Create an overloaded `calcBonus` method that takes a salary and an `enum Position { STAFF, MANAGER, CEO }`:
 - Staff: 10% of salary
 - Manager: 20% of salary
 - CEO: 300% of salary
 
-### 👨‍💻 Activity 2 - Calculate Bonus for Variable Wage Worker [10 minutes]
+---
 
-Now we have a variable wage worker, and we store his salary in an array. We want to calculate his bonus based on his monthly average salary. The worker should only get a bonus if he has worked for at least 6 months.
+## Practice Exercises
 
-Create an overloaded method that takes in an array of salaries and calculates the bonus based on the average salary.
+Work through these on your own to reinforce today's concepts:
 
-###  👨‍💻 Activity 3 - Vending Machine [OPTIONAL]
+1. Ask the user for their marks and print `"Excellent"` (marks > 85), `"Good"` (70–85), or `"Needs Improvement"` (otherwise).
+2. Ask the user for their favorite fruit — print `"Healthy choice!"` if it's `"apple"`, otherwise print `"Nice fruit!"`.
+3. Create a `mypackage` folder with `HelloWorld.java`, run it in VS Code, then remove the `package` line and observe the compilation error.
+4. Create an overloaded method that takes an array of salaries and calculates a bonus based on the average salary — only paying a bonus if the worker has at least 6 months of data.
+5. *(Optional)* Write a program that uses pattern matching in `switch` to check whether an object is a number, a string, or null.
 
-Create a new class `VendingMachine`. You may do it in the same file or create a new file.
-
-This vending machine will have a `makePayment` method that takes in a `double` amount and outputs to the console that the payment was accepted.
-
-It should also have another overloaded method that takes in an `enum` `EPayment`.
+### 👨‍💻 Optional / Bonus — Vending Machine
 
 ```java
 enum EPayment {
@@ -702,34 +504,34 @@ enum EPayment {
 }
 ```
 
-This overloaded `makePayment` method will accept the enum and call the respective `private` method i.e. `connectPayNow()`, `connectGrabPay()`, `connectFavePay()`. You can just return `true` or `false` in these methods for simulating the payment status.
-
-Test code:
+Create a `VendingMachine` class with an overloaded `makePayment` method:
+- One version takes a `double` amount (cash) and prints that payment was accepted.
+- One version takes an `EPayment` enum and calls a corresponding private method (`connectPayNow()`, `connectGrabPay()`, `connectFavePay()`), each returning `true`/`false` to simulate payment status.
 
 ```java
 VendingMachine myVendingMachine = new VendingMachine();
-myVendingMachine.makePayment(10.0); // cash
-myVendingMachine.makePayment(EPayment.GRABPAY); // cashless, no amount needed
+myVendingMachine.makePayment(10.0);
+myVendingMachine.makePayment(EPayment.GRABPAY);
 myVendingMachine.makePayment(EPayment.FAVEPAY);
 myVendingMachine.makePayment(EPayment.PAYNOW);
 ```
 
 ---
 
-## Lesson Summary [10 minutes]
+## Lesson Summary
 
 **Key Takeaways:**
 - Control flow statements (if-else, loops, switch) enable dynamic program execution
-- Scanner class allows interactive user input
+- Scanner allows interactive user input
 - Packages organize code and prevent naming conflicts
 - Methods promote code reusability and modularity
-- Method overloading provides flexibility with same method names
+- Method overloading provides flexibility with the same method name
 - Access modifiers control visibility and encapsulation
 
 **Next Steps:**
-- Complete the assignment
-- Review self-study materials for deeper understanding
-- Practice with additional exercises
+- Complete the practice exercises above
+- Review the self-study notes (package naming conventions)
+- Practice with additional exercises as needed
 
 ---
 

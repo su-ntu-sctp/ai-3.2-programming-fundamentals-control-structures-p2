@@ -124,34 +124,6 @@ for (int i = 1; i <= 10; i++) {
 
 ---
 
-### Reading User Input — `Scanner`
-
-Programs often need to react to input typed by a user while running. The `Scanner` class (from `java.util`) reads text, numbers, and other data types from the keyboard.
-
-```java
-import java.util.Scanner;
-
-public class UserInputActivity {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    System.out.print("Enter your username: ");
-    String userName = sc.nextLine();
-
-    if (userName.equals("admin")) {
-      System.out.println("Welcome Admin!");
-    } else {
-      System.out.println("Unauthorized user!");
-    }
-    sc.close();
-  }
-}
-```
-
-### 👨‍💻 Activity
-Ask for a password. Keep prompting until the user enters `"java123"`.
-
----
-
 ## Switch Statements
 
 When multiple conditions all depend on the same variable, a chain of `if-else` statements gets verbose. The `switch` statement handles this more cleanly by matching a variable against a list of possible values.

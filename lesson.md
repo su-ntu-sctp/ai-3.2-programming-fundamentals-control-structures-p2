@@ -124,6 +124,34 @@ for (int i = 1; i <= 10; i++) {
 
 ---
 
+### Reading User Input — `Scanner`
+
+Programs often need to react to input typed by a user while running. The `Scanner` class (from `java.util`) reads text, numbers, and other data types from the keyboard.
+
+```java
+import java.util.Scanner;
+
+public class UserInputActivity {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter your username: ");
+    String userName = sc.nextLine();
+
+    if (userName.equals("admin")) {
+      System.out.println("Welcome Admin!");
+    } else {
+      System.out.println("Unauthorized user!");
+    }
+    sc.close();
+  }
+}
+```
+
+### 👨‍💻 Activity
+Ask for a password. Keep prompting until the user enters `"java123"`.
+
+---
+
 ## Switch Statements
 
 When multiple conditions all depend on the same variable, a chain of `if-else` statements gets verbose. The `switch` statement handles this more cleanly by matching a variable against a list of possible values.
@@ -200,14 +228,16 @@ String feedback = switch (rating) {
 System.out.println(feedback);
 ```
 
+**Which data types can switch use?** `byte`, `short`, `char`, `int` (and their wrapper classes), `String`, and `enum` types. It does **not** work with `long`, `float`, `double`, or `boolean`. The return type of a switch *expression*, however, can be anything — `int`, `boolean`, a custom object, whatever the situation needs — the return type is completely independent of what you're switching on.
+
 ### 👨‍💻 Activity
 Write a switch expression that takes a month name and returns its quarter (Q1–Q4).
 
 ---
 
-## Pattern Matching in `switch` (Java 21) — *optional, time permitting*
+## Pattern Matching in `switch` (Java 21)
 
-Pattern matching lets a switch check both the **type** and the **value** of an object in one compact block, instead of writing separate `instanceof` checks.
+Pattern matching lets a switch check the **type** of an object, not just a fixed value — something a plain switch cannot do (plain switch cannot take custom objects at all; pattern matching is what makes that possible).
 
 ```java
 static String format(Object obj) {
@@ -220,11 +250,38 @@ static String format(Object obj) {
 }
 ```
 
+Each `case` checks "is this object actually an `Integer`? A `String`?" — and if it matches, Java automatically gives you a properly-typed variable to use immediately, with no manual casting required. `case null ->` also lets you handle `null` explicitly as its own case.
+
+**Important distinction:** the example above only checks **type** — it does not check any particular value within that type. To check both type *and* value together in the same case, add a `when` clause:
+
+```java
+static String describe(Object obj) {
+  return switch (obj) {
+    case Integer i when i < 0 -> "Negative integer: " + i;
+    case Integer i when i == 0 -> "Zero";
+    case Integer i -> "Positive integer: " + i;
+    case String s when s.isEmpty() -> "Empty string";
+    case String s -> "String: " + s.toUpperCase();
+    case null -> "null";
+    default -> "Unknown type";
+  };
+}
+```
+
+Here, `case Integer i when i < 0` checks both **type** (is it an `Integer`?) and **value** (is it negative?) before matching. Without a `when` clause, pattern matching only checks type.
+
+A few things worth noting:
+- This works the same whether it's inside a `static` method, an instance method, or directly inside `main` — there's no required structure; the examples above just use a separate reusable method as good practice.
+- The return type can be anything, same as any switch expression — not limited to `String`.
+- Case order matters, same as `if-else if` — Java checks top to bottom and stops at the first match, so put more specific types/conditions above more general ones.
+
 ---
 
 ## Part 2: Enums in Control Flow
 
 An **enum** defines a fixed set of named constants — useful whenever a value should only ever be one of a known, limited set of options (days of the week, statuses, directions). Enums are more type-safe than using `String` or `int` for the same purpose, because the compiler won't let you assign anything outside the defined set.
+
+An enum is a custom (user-defined) reference type — under the hood, it's actually a class the compiler generates for you. Each constant (`Direction.N`, `Direction.S`, etc.) is a real, singleton object, which is why enums are reference types, not primitives.
 
 ```java
 enum Direction { N, S, E, W }
@@ -233,8 +290,66 @@ Direction dir = Direction.N;
 System.out.println("Direction: " + dir);
 ```
 
+Enum constants can also carry fixed values, using a field and constructor:
+
+```java
+enum StatusCode {
+  OK(200), NOT_FOUND(404), SERVER_ERROR(500);
+
+  private final int code;
+
+  StatusCode(int code) {
+    this.code = code;
+  }
+
+  public int getCode() {
+    return code;
+  }
+}
+```
+`StatusCode.OK.getCode()` returns `200` — each constant carries its own fixed value, set once via the constructor.
+
+**Comparing enums:** unlike Strings, `==` is safe and conventional for comparing enum values, since each constant is a single guaranteed instance.
+
 ### 👨‍💻 Activity
 Create an enum `TrafficLight` with constants `RED`, `YELLOW`, and `GREEN`, and print the corresponding action for each (e.g. `RED` → "Stop").
+
+**Solution — using if-else:**
+```java
+enum TrafficLight { RED, YELLOW, GREEN }
+
+public class TrafficLightDemo {
+  public static void main(String[] args) {
+    TrafficLight light = TrafficLight.RED;
+
+    if (light == TrafficLight.RED) {
+      System.out.println("Stop");
+    } else if (light == TrafficLight.YELLOW) {
+      System.out.println("Get Ready");
+    } else if (light == TrafficLight.GREEN) {
+      System.out.println("Go");
+    }
+  }
+}
+```
+
+**Solution — using enhanced switch:**
+```java
+enum TrafficLight { RED, YELLOW, GREEN }
+
+public class TrafficLightDemo {
+  public static void main(String[] args) {
+    TrafficLight light = TrafficLight.RED;
+
+    switch (light) {
+      case RED -> System.out.println("Stop");
+      case YELLOW -> System.out.println("Get Ready");
+      case GREEN -> System.out.println("Go");
+    }
+  }
+}
+```
+Note: no `default` is needed here, since `TrafficLight` only has three constants and all three are covered — the compiler already knows nothing is left unhandled.
 
 ### Switch with Enums
 
@@ -366,8 +481,7 @@ public class MyApp {
 
 Calling `Car.drive()` directly (without creating an instance) will not compile — `drive()` needs an object to act on, since instance methods typically work with instance-specific data.
 
-### 👨‍💻 Activity
-Extend the `Car` class with one more static method and one more instance method of your choice, and call both correctly from `MyApp`.
+**Important:** a static method can only be called directly (with no class-name prefix) from *within the same class*. When calling a static method from a **different** class, you must prefix it with the class name — e.g. `BonusCalculator.calcBonus(5000)`, not just `calcBonus(5000)`. Leaving out the class name is one of the most common early errors — it produces a "cannot find symbol" error because Java looks for the method inside the *calling* class instead.
 
 ---
 
@@ -437,24 +551,39 @@ public static void myFn(float a)          // ✅ different parameter type
 public static void myFn(int b)            // ❌ same signature as the first — won't compile
 ```
 
+**Setting this up in code:** define these overloaded `calcBonus` methods inside a class named `BonusCalculator` (not inside `MyApp`). Since they are `static` methods, calling them from `MyApp` (or any other class) requires the class name prefix:
+
 ```java
-System.out.println("Employee bonus:" + calcBonus(5000));
-System.out.println("Staff Bonus: " + calcBonus(5000, 0.2));
-System.out.println("CEO Bonus: " + calcBonus(20000, 1.5));
+System.out.println("Employee bonus:" + BonusCalculator.calcBonus(5000));
+System.out.println("Staff Bonus: " + BonusCalculator.calcBonus(5000, 0.2));
+System.out.println("CEO Bonus: " + BonusCalculator.calcBonus(20000, 1.5));
 ```
 
 You can format decimal output cleanly with `printf`:
 
 ```java
-System.out.printf("Staff Bonus: $%.2f\n", calcBonus(5000, 0.2));
-System.out.printf("CEO Bonus: $%.2f\n", calcBonus(20000, 1.5));
+System.out.printf("Staff Bonus: $%.2f\n", BonusCalculator.calcBonus(5000, 0.2));
+System.out.printf("CEO Bonus: $%.2f\n", BonusCalculator.calcBonus(20000, 1.5));
 ```
 
+*Note: Java also supports `static import` (e.g. `import static BonusCalculator.calcBonus;`), which would let you call `calcBonus(5000)` with no class prefix at all. This works, but is generally discouraged for your own custom classes, since it hides which class a method actually comes from when someone else reads your code. Stick with the explicit `ClassName.method()` form shown above.*
+
 ### 👨‍💻 Activity — Calculate Bonus by Position
-Create an overloaded `calcBonus` method that takes a salary and an `enum Position { STAFF, MANAGER, CEO }`:
+Create an overloaded `calcBonus` method in `BonusCalculator` that takes a salary and an `enum Position { STAFF, MANAGER, CEO }`:
 - Staff: 10% of salary
 - Manager: 20% of salary
 - CEO: 300% of salary
+
+```java
+public static double calcBonus(double salary, Position position) {
+  double result = switch (position) {
+    case STAFF -> salary * 0.1;
+    case MANAGER -> salary * 0.2;
+    case CEO -> salary * 3.0;
+  };
+  return result;
+}
+```
 
 ---
 
@@ -464,11 +593,10 @@ Work through these on your own to reinforce today's concepts:
 
 1. Ask the user for their marks and print `"Excellent"` (marks > 85), `"Good"` (70–85), or `"Needs Improvement"` (otherwise).
 2. Ask the user for their favorite fruit — print `"Healthy choice!"` if it's `"apple"`, otherwise print `"Nice fruit!"`.
-3. Create a `mypackage` folder with `HelloWorld.java`, run it in VS Code, then remove the `package` line and observe the compilation error.
-4. Create an overloaded method that takes an array of salaries and calculates a bonus based on the average salary — only paying a bonus if the worker has at least 6 months of data.
-5. *(Optional)* Write a program that uses pattern matching in `switch` to check whether an object is a number, a string, or null.
+3. Create an overloaded method that takes an array of salaries and calculates a bonus based on the average salary — only paying a bonus if the worker has at least 6 months of data.
+4. *(Optional)* Write a program that uses pattern matching in `switch` (with a `when` clause) to check whether a number is positive, negative, or zero, and whether a string is empty or not.
 
-### 👨‍💻 Optional / Bonus — Vending Machine
+### 👨‍💻 Activity — Vending Machine
 
 ```java
 enum EPayment {

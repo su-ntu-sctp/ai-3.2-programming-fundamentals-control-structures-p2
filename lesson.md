@@ -124,34 +124,6 @@ for (int i = 1; i <= 10; i++) {
 
 ---
 
-### Reading User Input — `Scanner`
-
-Programs often need to react to input typed by a user while running. The `Scanner` class (from `java.util`) reads text, numbers, and other data types from the keyboard.
-
-```java
-import java.util.Scanner;
-
-public class UserInputActivity {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    System.out.print("Enter your username: ");
-    String userName = sc.nextLine();
-
-    if (userName.equals("admin")) {
-      System.out.println("Welcome Admin!");
-    } else {
-      System.out.println("Unauthorized user!");
-    }
-    sc.close();
-  }
-}
-```
-
-### 👨‍💻 Activity
-Ask for a password. Keep prompting until the user enters `"java123"`.
-
----
-
 ## Switch Statements
 
 When multiple conditions all depend on the same variable, a chain of `if-else` statements gets verbose. The `switch` statement handles this more cleanly by matching a variable against a list of possible values.
@@ -314,42 +286,6 @@ enum StatusCode {
 ### 👨‍💻 Activity
 Create an enum `TrafficLight` with constants `RED`, `YELLOW`, and `GREEN`, and print the corresponding action for each (e.g. `RED` → "Stop").
 
-**Solution — using if-else:**
-```java
-enum TrafficLight { RED, YELLOW, GREEN }
-
-public class TrafficLightDemo {
-  public static void main(String[] args) {
-    TrafficLight light = TrafficLight.RED;
-
-    if (light == TrafficLight.RED) {
-      System.out.println("Stop");
-    } else if (light == TrafficLight.YELLOW) {
-      System.out.println("Get Ready");
-    } else if (light == TrafficLight.GREEN) {
-      System.out.println("Go");
-    }
-  }
-}
-```
-
-**Solution — using enhanced switch:**
-```java
-enum TrafficLight { RED, YELLOW, GREEN }
-
-public class TrafficLightDemo {
-  public static void main(String[] args) {
-    TrafficLight light = TrafficLight.RED;
-
-    switch (light) {
-      case RED -> System.out.println("Stop");
-      case YELLOW -> System.out.println("Get Ready");
-      case GREEN -> System.out.println("Go");
-    }
-  }
-}
-```
-Note: no `default` is needed here, since `TrafficLight` only has three constants and all three are covered — the compiler already knows nothing is left unhandled.
 
 ### Switch with Enums
 
@@ -573,17 +509,6 @@ Create an overloaded `calcBonus` method in `BonusCalculator` that takes a salary
 - Staff: 10% of salary
 - Manager: 20% of salary
 - CEO: 300% of salary
-
-```java
-public static double calcBonus(double salary, Position position) {
-  double result = switch (position) {
-    case STAFF -> salary * 0.1;
-    case MANAGER -> salary * 0.2;
-    case CEO -> salary * 3.0;
-  };
-  return result;
-}
-```
 
 ---
 

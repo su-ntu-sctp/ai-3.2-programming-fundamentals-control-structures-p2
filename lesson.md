@@ -189,22 +189,7 @@ switch (direction) {
   default -> System.out.println("Invalid input");
 }
 ```
-
-A switch can also be used as an **expression**, returning a value that you assign directly to a variable:
-
-```java
-String quarter = switch (month) {
-  case "January", "February", "March" -> "Q1";
-  case "April", "May", "June" -> "Q2";
-  case "July", "August", "September" -> "Q3";
-  case "October", "November", "December" -> "Q4";
-  default -> "Unknown";
-};
-
-System.out.println("quarter: " + quarter);
-```
-
-When a case needs more than one line of logic before returning a value, use `yield` inside a block:
+A switch can also be used as an **expression**, returning a value that you assign directly to a variable. The arrows (`->`) return each value, and when a case needs more than one line of logic before returning, you use the `yield` keyword inside a block:
 
 ```java
 int rating = 5;
@@ -221,7 +206,10 @@ String feedback = switch (rating) {
 System.out.println(feedback);
 ```
 
+Here, the simple cases return their value directly with `->`, while the `default` case uses a block with `yield` to build and return a custom message.
+
 **Which data types can switch use?** `byte`, `short`, `char`, `int` (and their wrapper classes), `String`, and `enum` types. It does **not** work with `long`, `float`, `double`, or `boolean`. The return type of a switch *expression*, however, can be anything — `int`, `boolean`, a custom object, whatever the situation needs — the return type is completely independent of what you're switching on.
+
 
 ### 👨‍💻 Activity
 Write a switch expression that takes a month name and returns its quarter (Q1–Q4).

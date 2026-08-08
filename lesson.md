@@ -78,7 +78,6 @@ System.out.println(fruit1.equals(fruit2));  // true
 `fruit1` and `fruit2` hold the same text, but they are different objects in memory, so `==` returns `false`. **Always use `.equals()` when comparing string values** — this is a common bug source in real applications.
 
 ---
-
 ### Loops: `for` and `while`
 
 Loops let you repeat a block of code without writing it out multiple times.
@@ -103,8 +102,23 @@ while (i <= 5) {
 ```
 The condition is checked *before* each iteration — if it's `false` from the start, the loop body never runs.
 
-### 👨‍💻 Activity
-Write a program to print numbers from 1 to 10 using both a `for` loop and a `while` loop.
+Here is a slightly richer example that combines a loop with the modulo (`%`) and ternary (`? :`) operators — printing each number and labelling it as even or odd:
+
+```java
+for (int i = 1; i <= 10; i++) {
+  String type = (i % 2 == 0) ? "even" : "odd";
+  System.out.println(i + " is " + type);
+}
+```
+
+### 👨‍💻 Activity — FizzBuzz
+Print the numbers 1 to 20. For each number, print:
+- `"FizzBuzz"` if it is divisible by both 3 and 5
+- `"Fizz"` if it is divisible by 3
+- `"Buzz"` if it is divisible by 5
+- otherwise, just the number
+
+*(Tip: check the "divisible by both" condition first — remember, in an `if-else if` ladder the first true condition wins.)*
 
 ---
 
@@ -114,13 +128,20 @@ These statements change the normal flow inside a loop:
 - **`break`** exits the loop immediately, skipping any remaining iterations.
 - **`continue`** skips only the rest of the current iteration and moves on to the next one.
 
+The example below processes a list of order amounts. It skips any invalid entries (zero or negative) with `continue`, and stops processing entirely once it hits an oversized order (over 1000) with `break`:
+
 ```java
-for (int i = 1; i <= 10; i++) {
-  if (i == 3) continue; // skip printing 3, but keep looping
-  if (i == 8) break;    // stop the loop entirely once i reaches 8
-  System.out.println(i);
+int[] amounts = {50, 120, -5, 300, 2000, 80};
+
+for (int amount : amounts) {
+  if (amount <= 0) continue;   // skip invalid entries
+  if (amount > 1000) break;    // stop at the first oversized order
+  System.out.println("Processing: " + amount);
 }
 ```
+
+Here, `-5` is skipped by `continue`, and the loop stops completely when it reaches `2000` — so `80` is never processed, even though it comes after.
+
 
 ---
 

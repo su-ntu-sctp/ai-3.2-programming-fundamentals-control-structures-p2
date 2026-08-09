@@ -271,30 +271,41 @@ Direction dir = Direction.N;
 System.out.println("Direction: " + dir);
 ```
 
-Enum constants can also carry fixed values, using a field and constructor:
-
+Here is a more complete example. Suppose we are tracking the status of an order. Instead of using a `String` (where a typo like `"Shiped"` could slip through), we define an enum and let the compiler guarantee only valid statuses are ever used:
+ 
 ```java
-enum StatusCode {
-  OK(200), NOT_FOUND(404), SERVER_ERROR(500);
-
-  private final int code;
-
-  StatusCode(int code) {
-    this.code = code;
-  }
-
-  public int getCode() {
-    return code;
+enum OrderStatus { PENDING, SHIPPED, DELIVERED, CANCELLED }
+ 
+public class OrderDemo {
+  public static void main(String[] args) {
+    OrderStatus status = OrderStatus.SHIPPED;
+ 
+    System.out.println("Current status: " + status);
+ 
+    // Enums compare safely with ==
+    if (status == OrderStatus.SHIPPED) {
+      System.out.println("Your order is on the way!");
+    }
+ 
+    // Enums have a few built-in helpers
+    System.out.println("Position in list: " + status.ordinal()); // 1
+    System.out.println("As text: " + status.name());             // SHIPPED
+ 
+    // values() returns every constant in the enum
+    for (OrderStatus s : OrderStatus.values()) {
+      System.out.println(s);
+    }
   }
 }
 ```
-`StatusCode.OK.getCode()` returns `200` — each constant carries its own fixed value, set once via the constructor.
-
-**Comparing enums:** unlike Strings, `==` is safe and conventional for comparing enum values, since each constant is a single guaranteed instance.
+ 
+A few useful built-in enum methods shown above:
+- `ordinal()` — the position of the constant in the declaration (starting at 0)
+- `name()` — the constant's name as a `String`
+- `values()` — returns an array of every constant, handy for looping over all options
 
 ### 👨‍💻 Activity
 Create an enum `TrafficLight` with constants `RED`, `YELLOW`, and `GREEN`, and print the corresponding action for each (e.g. `RED` → "Stop").
-
 
 ### Switch with Enums
 

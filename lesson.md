@@ -488,50 +488,66 @@ Here, `startEngine()` is the only public entry point; the three private methods 
 
 ### Method Overloading
 
-**Method overloading** means defining two or more methods in the same class with the same name but different parameter lists, so each version handles a different set of inputs. Java decides which version to run based on the arguments passed at the call site.
+**Method overloading** means defining two or more methods in the same class with the same name but different parameter lists, so each version handles a different set of inputs. Java decides which version to run based on the arguments passed at the call site — this is resolved at compile time.
+
+We'll build all of these inside a single class, `BonusCalculator`, so the overloads stay related:
 
 ```java
-public static double calcBonus(double salary) {
-  return salary * 0.1;
+public class BonusCalculator {
+
+  // 1. Salary only — applies a standard 10% bonus
+  public static double calcBonus(double salary) {
+    return salary * 0.1;
+  }
+
+  // 2. Salary + custom rate
+  public static double calcBonus(double salary, double rate) {
+    return salary * rate;
+  }
+
+  // 3. Salary + position — different rule per position
+  public static double calcBonus(double salary, Position position) {
+    return switch (position) {
+      case STAFF -> salary * 0.1;
+      case MANAGER -> salary * 0.2;
+      case CEO -> salary * 3.0;
+    };
+  }
 }
-
-public static double calcBonus(double salary, double rate) {
-  return salary * rate;
-}
 ```
 
-**Rules for overloading:**
-1. The method name must be identical.
-2. The parameter list must differ — in number of parameters, or in type.
-
-The **method signature** is the method name plus its parameter list; the return type is *not* part of the signature, so you can't overload two methods that differ only in return type.
+All three methods share the name `calcBonus`, but each has a different parameter list — so they are valid overloads. Java picks the right one from the arguments you pass:
 
 ```java
-public static void myFn(int a)
-public static void myFn(int a, float b)   // ✅ different parameter list
-public static void myFn(float a)          // ✅ different parameter type
-public static void myFn(int b)            // ❌ same signature as the first — won't compile
+BonusCalculator.calcBonus(5000);                      // uses version 1
+BonusCalculator.calcBonus(5000, 0.2);                 // uses version 2
+BonusCalculator.calcBonus(5000, Position.MANAGER);    // uses version 3
 ```
 
-**Setting this up in code:** define these overloaded `calcBonus` methods inside a class named `BonusCalculator` (not inside `MyApp`). Since they are `static` methods, calling them from `MyApp` (or any other class) requires the class name prefix:
+Since `calcBonus` is a `static` method, it is called with the class-name prefix (`BonusCalculator.calcBonus(...)`) from another class.
+
+### Rules for Overloading
+
+1. The method name must be **identical**.
+2. The parameter list must **differ** — in the number of parameters, or in their types.
+
+The **method signature** is the method name plus its parameter list. The **return type is NOT part of the signature**, so you cannot overload two methods that differ only in return type.
+
+Using our `calcBonus` methods as reference:
 
 ```java
-System.out.println("Employee bonus:" + BonusCalculator.calcBonus(5000));
-System.out.println("Staff Bonus: " + BonusCalculator.calcBonus(5000, 0.2));
-System.out.println("CEO Bonus: " + BonusCalculator.calcBonus(20000, 1.5));
+public static double calcBonus(double salary)                    // ✅ valid
+public static double calcBonus(double salary, double rate)        // ✅ valid — different number of parameters
+public static double calcBonus(double salary, Position position) // ✅ valid — different parameter type
+
+public static int    calcBonus(double salary)                    // ❌ invalid — same signature as version 1
+                                                                 //    (return type alone is not enough)
 ```
 
-You can format decimal output cleanly with `printf`:
-
-```java
-System.out.printf("Staff Bonus: $%.2f\n", BonusCalculator.calcBonus(5000, 0.2));
-System.out.printf("CEO Bonus: $%.2f\n", BonusCalculator.calcBonus(20000, 1.5));
-```
-
-*Note: Java also supports `static import` (e.g. `import static BonusCalculator.calcBonus;`), which would let you call `calcBonus(5000)` with no class prefix at all. This works, but is generally discouraged for your own custom classes, since it hides which class a method actually comes from when someone else reads your code. Stick with the explicit `ClassName.method()` form shown above.*
+The last one fails because its signature — `calcBonus(double)` — is identical to the first version. Changing only the return type from `double` to `int` does not make it a different method, because the return type is not part of the signature.
 
 ### 👨‍💻 Activity — Calculate Bonus by Position
-Create an overloaded `calcBonus` method in `BonusCalculator` that takes a salary and an `enum Position { STAFF, MANAGER, CEO }`:
+Create an overloaded `calcBonus` method in `BonusCalculator` that takes a salary and an `enum Position { STAFF, MANAGER, CEO }`, and returns:
 - Staff: 10% of salary
 - Manager: 20% of salary
 - CEO: 300% of salary

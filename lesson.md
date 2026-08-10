@@ -346,14 +346,23 @@ public class HelloWorld {
 }
 ```
 
-To compile and run from the terminal, you need to be in the parent directory of `mypackage` and reference the fully qualified class name:
+To compile and run from the terminal, work from the **parent directory** of the `mypackage` folder.
+
+**Compile** — point to the file using its folder path (use a forward slash `/`, which works on Windows, Mac, and Linux):
 
 ```bash
-javac HelloWorld.java
+javac mypackage/HelloWorld.java
+```
+
+**Run** — use the fully qualified class name (package name + class name, separated by a dot, with no `.java` extension):
+
+```bash
 java mypackage.HelloWorld
 ```
 
-If you remove the `package mypackage;` line, the class no longer belongs to that package and running it with the qualified name will fail — a good way to see why the declaration matters.
+> Note: compiling uses the **file path** (`mypackage/HelloWorld.java`), while running uses the **package.ClassName** (`mypackage.HelloWorld`). Slash for compile, dot for run.
+
+If you remove the `package mypackage;` line, the class no longer belongs to that package, and running it with `java mypackage.HelloWorld` will fail — a good way to see why the declaration matters.
 
 ### Importing Packages
 
@@ -366,10 +375,7 @@ import java.util.*;
 
 **Package naming convention (self-study):** it's common to use your organization's reverse domain name — e.g. `companyname.com` becomes package `com.companyname`, matching folder structure `com/companyname`. Package names are all lowercase; use underscores to separate words if needed (`com.companyname.project_name`).
 
-### 👨‍💻 Activity
-Create a `mypackage` folder, add `HelloWorld.java` inside it, and run it. Then remove the `package` line and observe what happens.
 
----
 
 ## Part 4: Methods
 

@@ -538,23 +538,16 @@ public class BonusCalculator {
     return salary * rate;
   }
 
-  // 3. Salary + position — different rule per position
-  public static double calcBonus(double salary, Position position) {
-    return switch (position) {
-      case STAFF -> salary * 0.1;
-      case MANAGER -> salary * 0.2;
-      case CEO -> salary * 3.0;
-    };
+ 
   }
-}
+
 ```
 
-All three methods share the name `calcBonus`, but each has a different parameter list — so they are valid overloads. Java picks the right one from the arguments you pass:
+Both methods share the name `calcBonus`, but each has a different parameter list — so they are valid overloads. Java picks the right one from the arguments you pass:
 
 ```java
 BonusCalculator.calcBonus(5000);                      // uses version 1
 BonusCalculator.calcBonus(5000, 0.2);                 // uses version 2
-BonusCalculator.calcBonus(5000, Position.MANAGER);    // uses version 3
 ```
 
 Since `calcBonus` is a `static` method, it is called with the class-name prefix (`BonusCalculator.calcBonus(...)`) from another class.

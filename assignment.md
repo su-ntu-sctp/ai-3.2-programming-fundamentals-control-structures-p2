@@ -13,8 +13,7 @@ Create a program called ControlAssignment.java and solve the following problems 
 
 ## Submission (Optional)
 
-- Submit the URL of the GitHub Repository that contains your work to NTU black board.
-- Should you reference the work of your classmate(s) or online resources, give them credit by adding either the name of your classmate or URL.
+- This assignment is optional, meant for self practice. If you'd still like it evaluated by your instructor, just share the github url or a zipped code folder via discord or email.
 
 ## References
 - Java: https://docs.oracle.com/javase/

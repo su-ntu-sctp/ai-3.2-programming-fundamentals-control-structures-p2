@@ -62,22 +62,6 @@ if (score > 90) {
 ```
 
 ---
-
-### Comparing Strings
-
-In Java, strings are objects, not primitive data types. This matters because the `==` operator compares **object references** (whether two variables point to the same memory location), while `.equals()` compares **actual content**.
-
-```java
-String fruit1 = "apple";
-String fruit2 = new String("apple");
-
-System.out.println(fruit1 == fruit2);       // false
-System.out.println(fruit1.equals(fruit2));  // true
-```
-
-`fruit1` and `fruit2` hold the same text, but they are different objects in memory, so `==` returns `false`. **Always use `.equals()` when comparing string values** — this is a common bug source in real applications.
-
----
 ### Loops: `for` and `while`
 
 Loops let you repeat a block of code without writing it out multiple times.
@@ -110,6 +94,38 @@ for (int i = 1; i <= 10; i++) {
   System.out.println(i + " is " + type);
 }
 ```
+### Advanced Iteration: for-each and Streams
+
+Beyond the classic `for` and `while` loops, Java offers two more modern ways to walk through a collection or an array. These are cleaner than an index-based loop for many everyday tasks.
+
+#### Enhanced for-each loop
+
+When you simply need to visit every element and don't need the index, use the enhanced for-each loop. It reads as "for each element in the collection":
+
+```java
+int[] scores = {85, 92, 78};
+
+for (int score : scores) {
+  System.out.println(score);
+}
+```
+
+There is no counter and no bounds to manage, which removes an entire category of off-by-one bugs. Use it whenever you don't specifically need the index position.
+
+#### Streams (a first glimpse)
+
+Java also provides *streams*, which let you describe *what* you want to do with the data instead of writing the loop mechanics yourself. The same task as above can be written as:
+
+```java
+int[] scores = {85, 92, 78};
+
+// Hand each element to a stream, then print it
+Arrays.stream(scores).forEach(score -> System.out.println(score));
+```
+
+The `score -> System.out.println(score)` part is a *lambda* — for now, just read it as "for each score, print it." The result is identical to the loop above.
+
+> Note: streams and lambdas are powerful and are covered fully in a later chapter. For this lesson, you only need to recognise that this modern style exists as an alternative to writing loops by hand.
 
 ### 👨‍💻 Activity — FizzBuzz
 Print the numbers 1 to 20. For each number, print:
@@ -119,6 +135,23 @@ Print the numbers 1 to 20. For each number, print:
 - otherwise, just the number
 
 *(Tip: check the "divisible by both" condition first — remember, in an `if-else if` ladder the first true condition wins.)*
+
+### 👨‍💻 Bonus Activity — Grade the Scores (for-each)
+
+Given an array of test scores, use an **enhanced for-each loop** to print each score labelled `"Pass"` (50 or above) or `"Fail"` (below 50).
+
+```java
+int[] scores = {85, 92, 78, 65, 40};
+```
+
+Expected output:
+```
+85 -> Pass
+92 -> Pass
+78 -> Pass
+65 -> Pass
+40 -> Fail
+```
 
 ---
 
